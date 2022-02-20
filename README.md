@@ -7,35 +7,49 @@ To write a python program to implement K-Means Clustering Algorithm.
 
 ## Algorithm:
 
-### Step1
-<br>
+Step1
+load the csv into a dataframe
 
-### Step2
-<br>
+Step2
+print the number of contents to be displayed using df.head().
 
-### Step3
-<br>
+Step3
+the number of rows returned is defined in pandas options settings
 
-### Step4
-<br>
+Step4
+check your system's maximum column with the pd.options.display.max_column statement
 
-### Step5
-<br>
-
+Step5
+increase the maximum number of rows to display entire data frame
 ## Program:
 ```
-
-
-
-
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.cluster import KMeans
+import seaborn as sns
+X1 = pd.read_csv("clustering.csv")
+print (X1. head(2))
+X2 = X1.loc[:, ['ApplicantIncome', 'LoanAmount' ]]
+print(X2. head(2))
+X = X2.values
+sns.scatterplot(X[:,0], X[:, 1])
+plt.xlabel('Income')
+plt.ylabel('Loan')
+plt.show( )
+kmean=KMeans(n_clusters=4)
+kmean. fit(X)
+print('Cluster Centers: ',kmean.cluster_centers_)
+print('Labels: ',kmean.labels_)
+# predict the class for ApplicantIncome 9060 and Loanamount 120
+predicted_class = kmean.predict([[9000, 120]])
+print('The cluster group for Applicant Income 9000 and Loanamount is',predicted_class)
 
 
 ```
 ## Output:
 
-### Insert your output
+![FDGT](https://user-images.githubusercontent.com/94883079/154834286-889c4ab7-48a0-4dfc-82c9-bf1395c7a290.png)
 
-<br>
 
 ## Result
 Thus the K-means clustering algorithm is implemented and predicted the cluster class using python program.
